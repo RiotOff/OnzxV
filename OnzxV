@@ -1,5 +1,5 @@
 --[[
-Made by RiotOff
+Made by Райот#3611
 --]]
 
 local Hint = Instance.new("Hint", game.CoreGui)
@@ -50,7 +50,7 @@ end
 
 if not isfile("OnzxV/custom_skins.txt") then
 	print("downloading OnzxV custom skins file")
-	writefile("OnzxV/custom_skins.txt", game:HttpGet("https://raw.githubusercontent.com/RiotOff/OnzxV/main/Custom_Skins"))
+	writefile("OnzxV/custom_skins.txt", game:HttpGet("https://raw.githubusercontent.com/RiotOff/OnzxV/main/Custom_Skins.txt"))
 end
 
 if not isfile("OnzxV/custom_models.txt") then
@@ -90,7 +90,7 @@ local Hitboxes = {
 	["Legs"] = {"LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "RightUpperLeg", "RightLowerLeg", "RightFoot"}
 }
 
-local \Folder = Instance.new("Folder", workspace)
+local OnzxVFolder = Instance.new("Folder", workspace)
 OnzxVFolder.Name = "OnzxVFolder"
 
 local oldOsPlatform = game.Players.LocalPlayer.OsPlatform
@@ -134,7 +134,7 @@ local curVel = 16
 local isBhopping = false
 
 local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/RiotOff/OnzxV/main/ESP.lua"))()
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RiotOff/OnzxV/main/Library"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RiotOff/OnzxV/main/UILibrary.lua"))()
 
 local Window = library:CreateWindow(Vector2.new(500, 500), Vector2.new((workspace.CurrentCamera.ViewportSize.X/2)-250, (workspace.CurrentCamera.ViewportSize.Y/2)-250))
 
@@ -725,13 +725,13 @@ VisualsTabCategoryOthers:AddColorPicker("Ambient", Color3.new(1,1,1), "VisualsTa
 end)
 
 VisualsTabCategoryOthers:AddDropdown("Skybox", TableToNames(Skyboxes), "Default", "VisualsTabCategoryOthersSkybox", function(val)
-	if game.Lighting:FindFirstChild("ONZXV_SKYBOX") then
-		game.Lighting:FindFirstChild("ONZXV_SKYBOX"):Destroy()
+	if game.Lighting:FindFirstChild("OnzxV_SKYBOX") then
+		game.Lighting:FindFirstChild("OnzxV_SKYBOX"):Destroy()
 	end
 	
 	if val ~= "Default" and rawget(Skyboxes, val) then
 		local NewSkybox = Instance.new("Sky", game.Lighting)
-		NewSkybox.Name = "ONZXV_SKYBOX"
+		NewSkybox.Name = "OnzxV_SKYBOX"
 		
 		for i,v in pairs(rawget(Skyboxes, val)) do
 			NewSkybox[i] = v
@@ -2203,8 +2203,8 @@ if readfile("OnzxV/autoload.txt") ~= "" and isfile("OnzxV/configs/"..readfile("O
 	end
 end
 
-print("OnzxV made by RiotOff good luck!")
+print("OnzxV finished loading!")
 
-Hint.Text = "Discord: Райот#3611"
+Hint.Text = "OnzxV | Loading finished!"
 wait(1.5)
 Hint:Destroy()
